@@ -4,24 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UsbActivity">
+    tools:context=".UsbActivity"
+    android:background="@color/lb_action_text_color">
 
     <Button
         android:id="@+id/export"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="162dp"
-        android:layout_marginTop="250dp"
+        android:layout_marginStart="425dp"
+        android:layout_marginTop="200dp"
         android:layout_marginEnd="162dp"
-        android:text="Export Files to USB" />
+        android:text="Export Files To USB" />
 
     <Button
         android:id="@+id/email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="162dp"
-        android:layout_marginTop="250dp"
+        android:layout_marginStart="-275dp"
+        android:layout_marginTop="350dp"
         android:layout_marginEnd="162dp"
         android:layout_marginBottom="8dp"
-        android:text="email files" />
+        android:text="Email Files" />
 </LinearLayout>

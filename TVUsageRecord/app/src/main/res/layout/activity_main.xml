@@ -4,24 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@color/lb_action_text_color">
 
     <Button
         android:id="@+id/durationButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="250dp"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="200dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:text="@string/weekly_usage_stats" />
 
     <Button
         android:id="@+id/apps_rating_btn"
-        android:layout_width="161dp"
-        android:layout_height="54dp"
+        android:layout_width="162dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="250dp"
+        android:layout_marginTop="200dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="144dp"
         android:text="@string/view_apps_rating" />
@@ -31,17 +32,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="250dp"
+        android:layout_marginTop="200dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:text="@string/view_apps_running_history" />
+        android:text="View Apps Running History" />
 
     <Button
         android:id="@+id/exportF"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="257dp"
-        android:layout_marginTop="85dp"
+        android:layout_marginStart="-335dp"
+        android:layout_marginTop="300dp"
         android:layout_marginEnd="39dp"
         android:layout_marginBottom="32dp"
         android:text="Export Files" />

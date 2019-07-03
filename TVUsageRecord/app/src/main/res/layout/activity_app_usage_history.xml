@@ -8,10 +8,10 @@
 
     <ListView
         android:id="@+id/list"
-        android:layout_width="548dp"
+        android:layout_width="587dp"
         android:layout_height="438dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp" />
 
@@ -19,7 +19,8 @@
         android:id="@+id/sortFile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="400dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="36dp"
         android:text="Sort CSV File" />

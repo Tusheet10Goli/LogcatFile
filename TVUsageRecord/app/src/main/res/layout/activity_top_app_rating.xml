@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".WeekStats">
+    tools:context=".WeekStats"
+    android:background="@color/lb_action_text_color">
 
     <com.github.mikephil.charting.charts.PieChart
         android:id="@+id/piechart"

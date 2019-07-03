@@ -8,10 +8,10 @@
 
     <ListView
         android:id="@+id/listView"
-        android:layout_width="266dp"
+        android:layout_width="260dp"
         android:layout_height="363dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="300dp"
+        android:layout_marginTop="80dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp" />
 
@@ -19,8 +19,8 @@
         android:id="@+id/barBt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="350dp"
         android:layout_marginEnd="8dp"
         android:text="@string/cumulative_usage" />
 </LinearLayout>
