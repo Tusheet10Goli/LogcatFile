@@ -156,6 +156,7 @@ public class TopAppRating extends Activity {
         legend.setForm(Legend.LegendForm.SQUARE);
         legend.setPosition(Legend.LegendPosition.LEFT_OF_CHART);
         legend.setTextSize(12);
+        legend.setTextColor(Color.WHITE);
         String[] names = new String[xEntrys.size()];
         for (int i = 0; i < xEntrys.size(); i++) {
             names[i] = xEntrys.get(i);

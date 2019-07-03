@@ -149,6 +149,7 @@ public class WeekStats extends Activity {
         legend.setForm(Legend.LegendForm.SQUARE);
         legend.setPosition(Legend.LegendPosition.LEFT_OF_CHART);
         legend.setTextSize(12);
+        legend.setTextColor(Color.WHITE);
         legend.setExtra(colorArray, xData);
 
         //create pie data object
