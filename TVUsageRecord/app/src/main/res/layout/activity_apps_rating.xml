@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinatorLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AppsRating">
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="958dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="228dp"
+            android:layout_marginEnd="8dp"
+            tools:ignore="MissingConstraints" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/content_apps_rating"
+        android:layout_width="666dp"
+        android:layout_height="459dp"
+        android:layout_marginStart="-900dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingBottom="8dp" />
+
+    <Button
+        android:id="@+id/btPie"
+        android:layout_width="131dp"
+        android:layout_height="62dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="450dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Top Usage Apps" />
+
+</LinearLayout>

@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">TVUsageRecord</string>
+    <string name="title_activity_apps_rating">AppsRating</string>
+    <string name="enter_week_number">Enter Week Number :</string>
+    <string name="view_apps_rating">View Apps Rating</string>
+    <string name="view_apps_running_history">view apps running history</string>
+    <string name="weekly_usage_stats">Weekly Usage Stats</string>
+    <string name="cumulative_usage">Cumulative Usage</string>
+</resources>
