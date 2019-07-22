@@ -1,9 +1,14 @@
 package com.example.tvusagerecord;
 
+import android.Manifest;
+import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Environment;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -39,6 +44,25 @@ public class MBroadcastReceiver extends BroadcastReceiver {
         Toast.makeText(context, "On Boot", Toast.LENGTH_LONG).show();
         // if detected TV boot up
         if (intent.getAction().equals(Intent.ACTION_BOOT_COMPLETED)) {
+
+            if (ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                Log.d(TAG, "permission denied");
+                ActivityCompat.requestPermissions((Activity) context, new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE} ,1);
+                Log.d(TAG, "permission requested");
+            }
+
+            if (ContextCompat.checkSelfPermission(context, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                Log.d(TAG, "permission denied");
+                ActivityCompat.requestPermissions((Activity) context, new String[] {Manifest.permission.READ_EXTERNAL_STORAGE} ,1);
+                Log.d(TAG, "permission requested");
+            }
+
+            if (ContextCompat.checkSelfPermission(context, Manifest.permission.PACKAGE_USAGE_STATS) != PackageManager.PERMISSION_GRANTED) {
+                Log.d(TAG, "permission denied");
+                ActivityCompat.requestPermissions((Activity) context, new String[] {Manifest.permission.PACKAGE_USAGE_STATS} ,1);
+                Log.d(TAG, "permission requested");
+            }
+
             Intent serviceIntent = new Intent(context, MainService.class);
 
             try {
