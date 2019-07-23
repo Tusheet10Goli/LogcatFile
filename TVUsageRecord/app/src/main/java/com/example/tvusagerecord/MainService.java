@@ -191,106 +191,102 @@ public class MainService extends Service {
         //get the hour from current time
         String currentStr = dateFormat.format(current);
 
-        if (current >= lastUpdateTime + 30 * 1000) {
+        String hourStr = currentStr.split(" ")[1].split(":")[0];
 
-            String hourStr = currentStr.split(" ")[1].split(":")[0];
+        String period = "";
 
-            String period = "";
-
-            if (hourStr.equals("06") || hourStr.equals("07") || hourStr.equals("08") || hourStr.equals("09") || hourStr.equals("10")) {
-                //morning
-                //add ten seconds to file
-                //in final UI, convert those seconds from file to hours for view by users
-                period = "morning";
-            } else if (hourStr.equals("11") || hourStr.equals("12") || hourStr.equals("13")) {
-                //noon
-                //add ten seconds
-                period = "noon";
-            } else if (hourStr.equals("14") || hourStr.equals("15") || hourStr.equals("16") || hourStr.equals("17")) {
-                //afternoon
-                period = "afternoon";
-            } else if (hourStr.equals("18") || hourStr.equals("19") || hourStr.equals("20") || hourStr.equals("21") || hourStr.equals("22")) {
-                //evening
-                period = "evening";
-            } else {
-                //late night
-                //add ten seconds to file
-                period = "night";
-            }
-
-            try {
-                manager.updateDurationFile(durationFileName, week, period, 30);
-                manager.updateDurationFile(durationFileName, week, "total", 30);
-            } catch (UnsupportedEncodingException e) {
-                Log.e(TAG, "unsupported encoding exception while updating duration file");
-            } catch (FileNotFoundException e) {
-                Log.e(TAG, "duration file not found");
-            }
-
-            //update the lastUpdateTime variable
-            lastUpdateTime = current;
-            Log.d(TAG, "updated duration.csv");
+        if (hourStr.equals("06") || hourStr.equals("07") || hourStr.equals("08") || hourStr.equals("09") || hourStr.equals("10")) {
+            //morning
+            //add ten seconds to file
+            //in final UI, convert those seconds from file to hours for view by users
+            period = "morning";
+        } else if (hourStr.equals("11") || hourStr.equals("12") || hourStr.equals("13")) {
+            //noon
+            //add ten seconds
+            period = "noon";
+        } else if (hourStr.equals("14") || hourStr.equals("15") || hourStr.equals("16") || hourStr.equals("17")) {
+            //afternoon
+            period = "afternoon";
+        } else if (hourStr.equals("18") || hourStr.equals("19") || hourStr.equals("20") || hourStr.equals("21") || hourStr.equals("22")) {
+            //evening
+            period = "evening";
+        } else {
+            //late night
+            //add ten seconds to file
+            period = "night";
         }
+
+        try {
+            manager.updateDurationFile(durationFileName, week, period, 60);
+            manager.updateDurationFile(durationFileName, week, "total", 60);
+        } catch (UnsupportedEncodingException e) {
+            Log.e(TAG, "unsupported encoding exception while updating duration file");
+        } catch (FileNotFoundException e) {
+            Log.e(TAG, "duration file not found");
+        }
+
+        //update the lastUpdateTime variable
+        lastUpdateTime = current;
+        Log.d(TAG, "updated duration.csv");
+
         /** Above is for duration file */
 
 
         /** The following is for app rating file */
         long current2 = System.currentTimeMillis();
-        if (current2 - lastUpdateRating > 30 * 1000) {
-            List<UsageStats> apps = usm.queryUsageStats(UsageStatsManager.INTERVAL_BEST, current - 30 * 1000, current);
+        //if (current2 - lastUpdateRating > 60 * 1000) {
+        List<UsageStats> apps = usm.queryUsageStats(UsageStatsManager.INTERVAL_BEST, current - 60 * 1000, current);
 
 
-            for (UsageStats u : apps) {
-                try {
-                    manager.updateApp(u, ratingFileName);
-                } catch (IOException e) {
-                    Log.e(TAG, "IO Exception when updating app rating file");
-                }
+        for (UsageStats u : apps) {
+            try {
+                manager.updateApp(u, ratingFileName);
+            } catch (IOException e) {
+                Log.e(TAG, "IO Exception when updating app rating file");
             }
-            lastUpdateRating = current2;
         }
+        lastUpdateRating = current2;
+        //}
         /** Above is for app rating file */
 
 
         /** The following is for logcat file */
         long current3 = System.currentTimeMillis();
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        if (current3 >= lastUpdateTimeLogcat + 1 * 60 * 1000) {
-            try {
-                String currentTime = df.format(current3);
-                String requiredTime = currentTime.substring(5,15);
+        try {
+            String currentTime = df.format(current3);
+            String requiredTime = currentTime.substring(5,15);
 
-                Process process = Runtime.getRuntime().exec("logcat -d");
-                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-                StringBuilder log = new StringBuilder();
-                String line;
-                while((line = bufferedReader.readLine()) != null) {
-                    if (line.contains(requiredTime) && !line.contains("app is:")) {
-                        log.append(line);
-                        log.append("\n");
-                    }
+            Process process = Runtime.getRuntime().exec("logcat -d");
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            StringBuilder log = new StringBuilder();
+            String line;
+            while((line = bufferedReader.readLine()) != null) {
+                if (line.contains(requiredTime) && !line.contains("app is:")) {
+                    log.append(line);
+                    log.append("\n");
                 }
-
-                //Convert log to string
-                final String logString = new String(log.toString());
-
-                //Create txt file in SD Card
-                File file = new File(Environment.getExternalStorageDirectory(), "logcat.txt");
-
-                //To write logcat in text file
-                PrintWriter writer = new PrintWriter(file);
-
-                //Writing the string to file
-                writer.write(logString);
-                writer.flush();
-                writer.close();
-            } catch(FileNotFoundException e) {
-                e.printStackTrace();
-            } catch(IOException e) {
-                e.printStackTrace();
             }
-            lastUpdateTimeLogcat = current3;
+
+            //Convert log to string
+            final String logString = new String(log.toString());
+
+            //Create txt file in SD Card
+            File file = new File(Environment.getExternalStorageDirectory(), "logcat.txt");
+
+            //To write logcat in text file
+            PrintWriter writer = new PrintWriter(file);
+
+            //Writing the string to file
+            writer.write(logString);
+            writer.flush();
+            writer.close();
+        } catch(FileNotFoundException e) {
+            e.printStackTrace();
+        } catch(IOException e) {
+            e.printStackTrace();
         }
+        lastUpdateTimeLogcat = current3;
         /** Above is for logcat file */
 
 
