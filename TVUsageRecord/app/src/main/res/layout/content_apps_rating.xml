@@ -8,17 +8,11 @@
     android:orientation="horizontal"
     tools:showIn="@layout/activity_apps_rating">
 
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/appBarLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
-
     <ListView
         android:id="@+id/listview"
         android:layout_width="521dp"
         android:layout_height="436dp"
-        android:layout_marginStart="-600dp"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="44dp"
         android:layout_marginBottom="24dp" />
